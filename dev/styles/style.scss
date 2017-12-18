@@ -1,0 +1,100 @@
+@import 'setup';
+
+/* ----- CHANGE YOUR STYLES! -----*/
+$mainColor: #12B4E9;
+$backgroundColor: black;
+$textColor: white;
+$titleFont: 'againtsregular', 'Permanent Marker', sans-serif;
+$bodyFont: 'Montserrat', sans-serif;
+
+@font-face {
+	font-family: 'againtsregular';
+	src: url(../assets/againts.ttf);
+}
+
+/* ----- GLOBAL STYLES -----*/
+body {
+	background-color: $backgroundColor;
+	min-height: 100vh;
+	font-size: 62.5%;
+}
+
+/* ----- HEADER STYLES -----*/
+h1, .subtitle {
+	text-align: center;
+	margin: 0;
+	font-family: $titleFont;
+	color: $textColor;
+}
+h1 {
+	font-weight: normal;
+	font-size: 6rem;
+}
+h1 span {
+	color: $mainColor;
+	font-size: 7.5rem;
+}
+h1 .thirty {
+	margin-left: 10px;
+}
+h1 .hashtag {
+	font-size: 4rem;
+}
+.subtitle {
+	font-size: 2.5rem;
+}
+.subtitle a {
+	text-decoration: none;
+	color: $mainColor;
+	transition: color 0.1s ease-out;
+}
+.subtitle a:hover {
+	color: $textColor;
+}
+
+/* ----- LIST STYLES -----*/
+.daysList {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-wrap: wrap;
+	margin: 20px;
+}
+.dayItem {
+	width: 16.6%;
+}
+.dayLink {
+	text-decoration: none;
+}
+.dayWrapper {
+	border: 2px solid $mainColor;
+	border-radius: 5px;
+	color: $textColor;
+	position: relative;
+	min-height: 100px;
+	padding: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+.dayNumber {
+	font-family: $titleFont;
+	text-align: right;
+	font-size: 80px;
+	margin: 0;
+	opacity: 0.3;
+	position: absolute;
+	top: 50%;
+	left: 20px;
+	transform: translateY(-50%);
+}
+.dayTitle {
+	margin: 0;
+	font-family: $bodyFont;
+	font-size: 1.2rem;
+	position: relative;
+	bottom: 10px;
+}
+
+/* ----- FOOTER STYLES -----*/
