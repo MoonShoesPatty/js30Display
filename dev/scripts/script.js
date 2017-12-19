@@ -1,0 +1,1 @@
+const flickity = require('flickity');
