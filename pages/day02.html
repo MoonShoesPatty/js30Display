@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS + CSS Clock</title>
+</head>
+<body>
+	<div class="clock">
+		<div class="clock-face">
+			<div class="hand hour-hand"></div>
+			<div class="hand min-hand"></div>
+			<div class="hand second-hand"></div>
+			<div class="centerCircle"></div>
+			<div class="faceTicks faceTicks01"></div>
+			<div class="faceTicks faceTicks02"></div>
+			<div class="faceTicks faceTicks03 faceTicksFourPoints"></div>
+			<div class="faceTicks faceTicks04"></div>
+			<div class="faceTicks faceTicks05"></div>
+			<div class="faceTicks faceTicks06 faceTicksFourPoints"></div>
+			<div class="faceTicks faceTicks07"></div>
+			<div class="faceTicks faceTicks08"></div>
+			<div class="faceTicks faceTicks09 faceTicksFourPoints"></div>
+			<div class="faceTicks faceTicks10"></div>
+			<div class="faceTicks faceTicks11"></div>
+			<div class="faceTicks faceTicks12 faceTicksFourPoints"></div>
+		</div>
+
+	</div>
+	<style>
+		html {
+			/* background:#018DED url(http://unsplash.it/1500/1000?image=881&blur=50); */
+			background-size:cover;
+			font-family:'helvetica neue';
+			text-align: center;
+			font-size: 10px;
+			background-image: radial-gradient(rgba(0,40,100,0.5), rgb(39, 39, 39));
+		}
+
+		body {
+			margin: 0;
+			font-size: 2rem;
+			display:flex;
+			flex:1;
+			min-height: 100vh;
+			align-items: center;
+		}
+
+		.faceTicks {
+			width:50%;
+			height:2px;
+			background-image: linear-gradient(to right, rgba(39, 39, 39, 0.5) 20%, transparent 20.1%);
+			position: absolute;
+			top:50%;
+			transform-origin: 100%;
+		}
+		.faceTicksFourPoints {
+			height: 5px;
+			background-image: linear-gradient(to right, rgba(39, 39, 39, 1) 35%, transparent 35.1%);	
+		}
+		.faceTicks01 {
+			transform: rotate(30deg);
+		}
+		.faceTicks02 {
+			transform: rotate(60deg);
+		}
+		.faceTicks03 {
+			transform: rotate(90deg);
+		}
+		.faceTicks04 {
+			transform: rotate(120deg);
+		}
+		.faceTicks05 {
+			transform: rotate(150deg);
+		}
+		.faceTicks06 {
+			transform: rotate(180deg);
+		}
+		.faceTicks07 {
+			transform: rotate(210deg);
+		}
+		.faceTicks08 {
+			transform: rotate(240deg);
+		}
+		.faceTicks09 {
+			transform: rotate(270deg);
+		}
+		.faceTicks10 {
+			transform: rotate(300deg);
+		}
+		.faceTicks11 {
+			transform: rotate(330deg);
+		}
+		.faceTicks12 {
+			transform: rotate(0deg);
+			background-image: linear-gradient(to right, rgb(202, 0, 0) 35%, transparent 35.1%);			
+		}
+
+		.centerCircle {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, calc(-50% + 3px));
+			height: 5%;
+			width: 5%;
+			background-color: rgb(39, 39, 39);
+			border-radius: 50%;
+		}
+
+		.clock {
+			width: 30rem;
+			height: 30rem;
+			border:20px solid rgb(39, 39, 39);
+			border-radius:50%;
+			margin:50px auto;
+			position: relative;
+			padding:2rem;
+			box-shadow:
+				0 0 0 4px rgba(0,0,0,0.8),
+				inset 0 0 0 3px rgb(218, 218, 218),
+				inset 0 0 10px black,
+				0 0 10px rgba(0,0,0,0.9),
+				5px -5px 20px rgba(0,0,0,1);
+			transform: rotate(90deg);
+			background-color: white;
+		}
+
+		.clock-face {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			transform: translateY(-3px); /* account for the height of the clock hands */
+			/* background-color: white; */
+		}
+
+		.hand {
+			width:50%;
+			height:6px;
+			background:rgb(39, 39, 39);
+			position: absolute;
+			top:50%;
+			transform-origin: 100%;
+			transform: rotate(90deg);
+			transition: all 0.08s;
+			transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+			z-index: 100;
+		}
+		.second-hand {
+			height: 2px;
+		}
+		.hour-hand {
+			background-color: transparent;
+			background-image: linear-gradient(to right, transparent 30%, rgb(39, 39, 39) 30.1%)
+		}
+	</style>
+
+	<script>
+		const secondHand = document.querySelector('.second-hand');
+		const minuteHand = document.querySelector('.min-hand');
+		const hourHand = document.querySelector('.hour-hand');
+
+		const setDate = function() {
+			const currentTime = new Date();
+			const seconds = currentTime.getSeconds();
+			const minutes = currentTime.getMinutes();
+			const hours = currentTime.getHours();
+
+			const secondDegrees = (seconds / 60) * 360;
+			const minuteDegrees = ((minutes / 60) * 360) + ((seconds / 60) * 6);
+			const hourDegrees = ((hours / 12) * 360) + ((minutes / 60) * 30);
+
+			secondHand.style.transform = `rotate(${secondDegrees}deg)`;
+			minuteHand.style.transform = `rotate(${minuteDegrees}deg)`;
+			hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+		}
+
+		setInterval(setDate, 1000);
+
+		setDate();
+	</script>
+</body>
+</html>
