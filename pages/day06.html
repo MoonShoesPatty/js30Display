@@ -6,7 +6,7 @@
 	<style>
 		html {
 			box-sizing: border-box;
-			background:#ffc600;
+			background: black;
 			font-family:'helvetica neue';
 			font-size: 20px;
 			font-weight: 200;
@@ -66,7 +66,7 @@
 		}
 
 		.hl {
-			background:#ffc600;
+			background:#12B4E9;
 		}
 	</style>
 </head>
@@ -112,6 +112,9 @@
 						<span class="population">${place.population}</span>
 					</li>`
 				}).join('');
+				if (matchArray.length === 0) {
+					html = '<li>No results!</li>'
+				}
 			} else {
 				html = `<li>Filter for a city</li>
 						<li>or a state</li>`
