@@ -29,7 +29,7 @@
 		.item:last-child {
 			border-bottom:0;
 		}
-		input:checked + p {
+		input:checked + label {
 			background:rgba(18, 179, 233, 0.25);
 		}
 
@@ -37,10 +37,10 @@
 			margin:20px;
 		}
 
-		p {
+		label {
 			margin:0;
 			padding:20px;
-			transition:background 0.2s;
+			transition:background 0.3s;
 			flex:1;
 			font-family:'helvetica neue';
 			font-size: 20px;
@@ -55,40 +55,40 @@
 	When a user clicks a checkbox, holds Shift, and then clicks another checkbox a few rows down, all the checkboxes inbetween those two checkboxes should be checked. -->
 	<div class="inbox">
 		<div class="item">
-			<input type="checkbox">
-			<p>This is an inbox layout.</p>
+			<input type="checkbox" name="first">
+			<label for="first">This is an inbox layout.</label>
 		</div>
 		<div class="item">
 			<input type="checkbox">
-			<p>Check one item</p>
+			<label>Check one item</label>
 		</div>
 		<div class="item">
 			<input type="checkbox">
-			<p>Hold down your Shift key</p>
+			<label>Hold down your Shift key</label>
 		</div>
 		<div class="item">
 			<input type="checkbox">
-			<p>Check a lower item</p>
+			<label>Check a lower item</label>
 		</div>
 		<div class="item">
 			<input type="checkbox">
-			<p>Everything inbetween should also be set to checked</p>
+			<label>Everything inbetween should also be set to checked</label>
 		</div>
 		<div class="item">
 			<input type="checkbox">
-			<p>Try do it with out any libraries</p>
+			<label>Try do it with out any libraries</label>
 		</div>
 		<div class="item">
 			<input type="checkbox">
-			<p>Just regular JavaScript</p>
+			<label>Just regular JavaScript</label>
 		</div>
 		<div class="item">
 			<input type="checkbox">
-			<p>Good Luck!</p>
+			<label>Good Luck!</label>
 		</div>
 		<div class="item">
 			<input type="checkbox">
-			<p>Don't forget to tweet your result!</p>
+			<label>Don't forget to tweet your result!</label>
 		</div>
 	</div>
 	<script>
