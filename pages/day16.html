@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Mouse Shadow</title>
+</head>
+<body>
+
+	<div class="hero">
+		<h1 contenteditable>🔥WHOA!</h1>
+	</div>
+
+	<style>
+	html {
+		color:black;
+		font-family: sans-serif;
+	}
+
+	body {
+		margin: 0;
+		background-color: black;
+	}
+
+	.hero {
+		min-height: 100vh;
+		display:flex;
+		justify-content: center;
+		align-items: center;
+		color:#12B4E9;
+	}
+
+	h1 {
+		text-shadow: 10px 10px 0 rgba(0,0,0,1);
+		font-size: 100px;
+	}
+	</style>
+
+	<script>
+		const hero = document.querySelector('.hero');
+		const text = hero.querySelector('h1');
+		const walk = 100;
+
+		function shadow(e) {
+			const width = hero.offsetWidth;
+			const height = hero.offsetHeight;
+
+			let {offsetX: x, offsetY: y} = e;
+
+			if (this !== e.target) {
+				x = x + e.target.offsetLeft
+				y = y + e.target.offsetTop
+			}
+
+			const xWalk = Math.round((x / width * walk) - (walk / 2));
+			const yWalk = Math.round((y / width * walk) - (walk / 4));
+
+			const perspective = 25;
+
+			text.style.textShadow = `
+			${xWalk / perspective}px ${yWalk / perspective}px 0 rgba(240,240,255,1),
+			${-xWalk / perspective}px ${-yWalk / perspective}px 0 rgba(0,0,0,1),
+			${(xWalk * 2.5) / perspective}px ${(yWalk * 2.5) / perspective}px 0 rgba(240,240,255,1),
+			${(xWalk * 2.5) / perspective}px ${(yWalk * 2.5) / perspective}px 0 rgba(0,0,0,1),
+			${-xWalk}px ${-yWalk}px 5px rgba(0,0,0,0.5),
+			${-xWalk}px ${-yWalk}px 150px rgba(255,255,255,1),
+			${-xWalk}px ${-yWalk}px 250px rgba(255,255,255,1)
+			`;
+		}
+
+		hero.addEventListener('mousemove', shadow);
+
+		text.style.textShadow = `
+			-1px -1px 2px rgba(255,255,255,0.5),
+			1px 1px 2px rgba(0,0,0,1),
+			20px 20px 5px rgba(0,0,0,0.5),
+			20px 20px 150px rgba(255,255,255,1),
+			20px 20px 250px rgba(255,255,255,1)
+			`;
+	</script>
+</body>
+</html>
